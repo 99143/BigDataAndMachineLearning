@@ -1,1 +1,71 @@
+###Hands-On: Install a Docker Engine
+###Install Cloudera Quickstart on Docker Container
+
+###Update OS (Ubuntu)
+$ sudo su -
+# apt-get update
+
+###Docker Installation
+# apt-get install docker.io
+
+###Pull Cloudera Quickstart
+# docker pull cloudera/quickstart:latest
+
+###Verify the image was successfully pulled
+# docker images
+
+###Run Cloudera quickstart
+# docker run -v /root:/mnt --hostname=quickstart.cloudera --privileged=true -t -i -p 8888:8888 -p 8880:8880 -p 9092:9092 -p 2181:2181 -p 11122:11122 cloudera/quickstart /usr/bin/docker-quickstart
+
+###Docker commands that are frequently used
+###Check for downloaded Docker images
+# docker images
+
+###Run Docker container
+# docker run -v /root:/mnt --hostname=quickstart.cloudera --privileged=true -t -i -p 8888:8888 -p 8880:8880 -p 9092:9092 -p 2181:2181 -p 11122:11122 cloudera/quickstart /usr/bin/docker-quickstart
+
+###Check for Container ID and its status
+# docker ps -a
+
+###Force to stop a container
+# docker stop [container id]
+
+###Remove a container that is “exit” status
+# docker rm [container id]
+
+###Back to the running container (get root@quickstart#)
+# docker exec -it [container id] bash
+
+###Back to the latest session in running container
+# docker attach [container id]
+
+###Exit from container:
+# exit (exit & kill the running image)
+Ctrl-P, Ctrl-Q (exit without killing the running image)
+
+###Shell Script for Complete stopping Hadoop’s all services
+#! /usr/bin/env bash
+/etc/init.d/zookeeper-server stop
+/etc/init.d/hadoop-hdfs-datanode stop
+/etc/init.d/hadoop-hdfs-journalnode stop
+/etc/init.d/hadoop-hdfs-namenode stop
+/etc/init.d/hadoop-hdfs-secondarynamenode stop
+/etc/init.d/hadoop-httpfs stop
+/etc/init.d/hadoop-mapreduce-historyserver stop
+/etc/init.d/hadoop-yarn-nodemanager stop
+/etc/init.d/hadoop-yarn-resourcemanager stop
+/etc/init.d/hbase-master stop
+/etc/init.d/hbase-rest stop
+/etc/init.d/hbase-thrift stop
+/etc/init.d/hive-metastore stop
+/etc/init.d/hive-server2 stop
+/etc/init.d/sqoop2-server stop
+/etc/init.d/spark-history-server stop
+/etc/init.d/hbase-regionserver stop
+/etc/init.d/hue stop
+/etc/init.d/impala-state-store stop
+/etc/init.d/oozie stop
+/etc/init.d/solr-server stop
+/etc/init.d/impala-catalog stop
+/etc/init.d/impala-server stop
 
