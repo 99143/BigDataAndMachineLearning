@@ -1,0 +1,9 @@
+###Allows Hive QL statements to access HBase tables for both read (SELECT) and write (INSERT). 
+###It is even possible to combine access to HBase tables with native Hive tables via joins and unions.
+
+create external table hbaseemployee (
+id int, name string, city string, designation string, salary float)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES (
+"hbase.columns.mapping" =":key,personal data:name,personal data:city,professional data:designation, professional data:salary")
+TBLPROPERTIES("hbase.table.name" = "employee");
