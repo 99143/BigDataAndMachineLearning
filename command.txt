@@ -33,6 +33,9 @@ $ sudo su -
 ###Force to start a container
 # docker start [container id]
 
+###Create New docker
+# docker commit [container id] [images-Repository]
+
 ###Remove a container that is “exit” status
 # docker rm [container id]
 
