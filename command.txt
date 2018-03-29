@@ -30,6 +30,9 @@ $ sudo su -
 ###Force to stop a container
 # docker stop [container id]
 
+###Force to start a container
+# docker start [container id]
+
 ###Remove a container that is “exit” status
 # docker rm [container id]
 
